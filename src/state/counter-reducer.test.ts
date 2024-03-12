@@ -13,7 +13,7 @@ beforeEach(() => {
         count:20,
         maxValue:0,
         minValue:10,
-        message: '',
+        isDisabled: false,
     }
 })
 

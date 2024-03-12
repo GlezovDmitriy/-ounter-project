@@ -11,7 +11,7 @@ export const Counter = () => {
     let [count, setCount] = useState(0)
     let [maxValue, setMaxValue] = useState(0)
     let [minValue, setMinValue] = useState(0)
-    let [error, setError] = useState(false)
+    let [isDisabled, setIsDisabled] = useState(false)
     let [message, setMessage] = useState('')
     let [setting, setSetting] = useState(false)
 
@@ -86,6 +86,8 @@ export const Counter = () => {
                 <div>
                     <SettingButton minValue={minValue}
                                    maxValue={maxValue}
+                                   isDisabled={isDisabled}
+                                   count={count}
                                    SettingButtonHandler={SettingButtonHandler}/>
                 </div>
                 <div className={"message"}>
@@ -110,11 +112,13 @@ export const Counter = () => {
                     <IncrementButton count={count}
                                      onClickIncHandler={onClickIncHandler}
                                      maxValue={maxValue}
-                                     minValue={minValue}/>
+                                     minValue={minValue}
+                                     isDisabled={isDisabled}/>
                     <ResetButton count={count}
                                  onClickResetHandler={onClickResetHandler}
                                  minValue={minValue}
-                                 maxValue={maxValue}/>
+                                 maxValue={maxValue}
+                    isDisabled={isDisabled}/>
 
                 </div>
                 <div className={"message"}>

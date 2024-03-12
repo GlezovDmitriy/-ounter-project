@@ -1,6 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./state/store";
-import {IncrementCountAC, ResetCountAC, SetMaxValueAC, SetMinValueAC, StateType} from "./state/counter-reducer";
+import {
+    IncrementCountAC,
+    ResetCountAC,
+    SetMaxValueAC,
+    SetMinValueAC,
+    SettingCounterAC,
+    StateType
+} from "./state/counter-reducer";
 import {ChangeEvent, useCallback, useState} from "react";
 
 export const useCounterWithRedux = ()=>{
@@ -19,9 +26,9 @@ export const useCounterWithRedux = ()=>{
     }
     const SettingButtonHandler = useCallback(
         () => {
-            const action = ResetCountAC()
+            const action = SettingCounterAC()
             dispatch(action)
-        },[]
+        },[dispatch]
     )
     const onChangeMaxInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
         const action = SetMaxValueAC (+event.currentTarget.value)

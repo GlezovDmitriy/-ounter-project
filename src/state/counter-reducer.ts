@@ -4,7 +4,7 @@ export type StateType = {
     count: number
     maxValue: number
     minValue: number
-    message: string
+    isDisabled: boolean,
 }
 type IncrementCounterActionType = {
     type: 'INCREMENT-COUNT'
@@ -25,19 +25,24 @@ type ShowMessageActionType = {
 type ResetCountActionType = {
     type: 'RESET-COUNT',
 }
+type SettingCounterActionType = {
+    type: 'SETTING',
+
+}
 
 type ActionsType =
     IncrementCounterActionType
     | SetMaxValueActionType
     | SetMinValueActionType
     | ShowMessageActionType
-| ResetCountActionType
+    | ResetCountActionType
+    | SettingCounterActionType
 
 const initialState: StateType = {
     count: 0,
     maxValue: 1,
     minValue: 0,
-    message: '',
+    isDisabled: true,
 
 }
 export const counterReducer = (state: StateType = initialState, action: ActionsType) => {
@@ -55,6 +60,7 @@ export const counterReducer = (state: StateType = initialState, action: ActionsT
         case 'SET-MAX-VALUE-COUNT': {
             let stateCopy = {...state}
             stateCopy.maxValue = action.maxValue
+            stateCopy.isDisabled = true
             return stateCopy
         }
         case 'SET-MIN-VALUE-COUNT': {
@@ -66,26 +72,35 @@ export const counterReducer = (state: StateType = initialState, action: ActionsT
             /*let stateCopy = {...state}
             stateCopy.message = action.message
             return stateCopy*/
-            return {...state,message : action.message}
+            return {...state, message: action.message}
+        }
+        case 'SETTING': {
+            /*let stateCopy = {...state}
+            stateCopy.message = action.message
+            return stateCopy*/
+            return {...state, isDisabled: false, count:state.minValue}
         }
 
         default:
-           return  state
+            return state
     }
 }
 
-export const IncrementCountAC = ():IncrementCounterActionType=>{
+export const IncrementCountAC = (): IncrementCounterActionType => {
     return {type: 'INCREMENT-COUNT'}
 }
-export const ResetCountAC = ():ResetCountActionType=>{
+export const ResetCountAC = (): ResetCountActionType => {
     return {type: 'RESET-COUNT'}
 }
-export const SetMaxValueAC = (maxValue:number):SetMaxValueActionType=>{
-    return {type: 'SET-MAX-VALUE-COUNT', maxValue: maxValue }
+export const SetMaxValueAC = (maxValue: number): SetMaxValueActionType => {
+    return {type: 'SET-MAX-VALUE-COUNT', maxValue: maxValue}
 }
-export const SetMinValueAC = (minValue:number):SetMinValueActionType=>{
-    return {type: 'SET-MIN-VALUE-COUNT', minValue: minValue }
+export const SetMinValueAC = (minValue: number): SetMinValueActionType => {
+    return {type: 'SET-MIN-VALUE-COUNT', minValue: minValue}
 }
-export const ShowMessageAC = (message:string):ShowMessageActionType=>{
-    return {type: 'SHOW-MESSAGE', message: message }
+export const ShowMessageAC = (message: string): ShowMessageActionType => {
+    return {type: 'SHOW-MESSAGE', message: message}
+}
+export const SettingCounterAC = (): SettingCounterActionType => {
+    return {type: 'SETTING'}
 }

@@ -75,6 +75,8 @@ export const CounterWithRedux = () => {
                 <div>
                     <SettingButton minValue={state.minValue}
                                    maxValue={state.maxValue}
+                                   isDisabled={state.isDisabled}
+                                   count={state.count}
                                    SettingButtonHandler={SettingButtonHandler}/>
                 </div>
                 <div className={"message"}>
@@ -96,16 +98,17 @@ export const CounterWithRedux = () => {
                             : "counter"}>{state.count}</span>}
 
                 </div>
-                <span className={"message"}>{state.message}</span>
                 <div>
                     <IncrementButton count={state.count}
                                      onClickIncHandler={onClickIncHandler}
                                      maxValue={state.maxValue}
-                                     minValue={state.minValue}/>
+                                     minValue={state.minValue}
+                                     isDisabled={state.isDisabled}/>
                     <ResetButton count={state.count}
                                  onClickResetHandler={onClickResetHandler}
                                  minValue={state.minValue}
-                                 maxValue={state.maxValue}/>
+                                 maxValue={state.maxValue}
+                                 isDisabled={state.isDisabled}/>
 
                 </div>
                 <div className={"message"}>
