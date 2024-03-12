@@ -1,0 +1,97 @@
+.App {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  background-color: #c9c8c8;
+}
+
+.App > div {
+  margin-right: 50px;
+}
+.main{
+  width: 400px;
+  height: 200px;
+  background-color: #4b375b;
+  border: black;
+  border-radius: 15px;
+  box-shadow: darkgray 5px 5px;
+  padding: 20px;
+}
+.display{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 398px;
+  height: 150px;
+  background-color: #9259a1;
+  text-align: center;
+  border: solid gray 1px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+}
+.increment{
+  width: 50%;
+  color: #1f0711;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.reset{
+  width: 50%;
+  color: #1f0711;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.setting {
+  width: 100%;
+  color: #1f0711;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.counter{
+  color: white;
+  font-size: 100px;
+}
+
+.stop-counter{
+  color:red;
+  font-size: 100px;
+}
+
+.error {
+  font-size: 25px;
+  margin-top: 20px;
+  color: red;
+}
+
+.no-error{
+  font-size: 25px;
+  margin-top: 20px;
+}
+.message{
+  font-size: 15px;
+  margin-top: 10px;
+  color: red;
+}
+.setting-button{
+
+}
+.input-error {
+  border: 2px solid red;
+  font-size: 25px;
+  width: 100px;
+}
+.input {
+  font-size: 25px;
+  width: 100px;
+}
+.Error{
+  margin: 0 auto;
+  font-size: 35px;
+
+  color: red;
+}
