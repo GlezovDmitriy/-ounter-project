@@ -8,19 +8,21 @@ type ResetButtonType = {
     maxValue: number
     isDisabled: boolean
 }
-export const ResetButton = (props: ResetButtonType) => {
-    console.log('ResetButton')
-    return (
-        <>
-            <button className={"reset"}
-                    onClick={props.onClickResetHandler}
-                    disabled={props.isDisabled
-                        || props.count === props.minValue
-                        || props.minValue < 0
-                        || props.maxValue < 0}>
-                RESET
-            </button>
-        </>
-    );
-};
+export const ResetButton = React.memo(
+    (props: ResetButtonType) => {
+        console.log('ResetButton')
+        return (
+            <>
+                <button className={"reset"}
+                        onClick={props.onClickResetHandler}
+                        disabled={props.isDisabled
+                            || props.count === props.minValue
+                            || props.minValue < 0
+                            || props.maxValue < 0}>
+                    RESET
+                </button>
+            </>
+        );
+    }
+)
 

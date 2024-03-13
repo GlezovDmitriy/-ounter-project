@@ -16,30 +16,38 @@ export const useCounterWithRedux = ()=>{
 
 
 
-    const onClickIncHandler = () => {
-        const action = IncrementCountAC()
-        dispatch(action)
-    }
-    const onClickResetHandler = () => {
-        const action = ResetCountAC()
-        dispatch(action)
-    }
+    const onClickIncHandler = useCallback(
+        () => {
+            const action = IncrementCountAC()
+            dispatch(action)
+        },[dispatch]
+    )
+    const onClickResetHandler = useCallback(
+        () => {
+            const action = ResetCountAC()
+            dispatch(action)
+        },[dispatch]
+    )
     const SettingButtonHandler = useCallback(
         () => {
             const action = SettingCounterAC()
             dispatch(action)
         },[dispatch]
     )
-    const onChangeMaxInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        const action = SetMaxValueAC (+event.currentTarget.value)
-        dispatch(action)
-        console.log('maxValue')
-    }
-    const onChangeMinInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        const action = SetMinValueAC (+event.currentTarget.value)
-        dispatch(action)
-        console.log('minValue')
-    }
+    const onChangeMaxInputHandler = useCallback(
+        (event: ChangeEvent<HTMLInputElement>) => {
+            const action = SetMaxValueAC (+event.currentTarget.value)
+            dispatch(action)
+            console.log('maxValue')
+        },[dispatch]
+    )
+    const onChangeMinInputHandler = useCallback(
+        (event: ChangeEvent<HTMLInputElement>) => {
+            const action = SetMinValueAC (+event.currentTarget.value)
+            dispatch(action)
+            console.log('minValue')
+        },[dispatch]
+    )
     return{
         state,
         onChangeMinInputHandler,

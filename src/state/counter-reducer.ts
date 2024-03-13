@@ -49,12 +49,12 @@ export const counterReducer = (state: StateType = initialState, action: ActionsT
     switch (action.type) {
         case 'INCREMENT-COUNT': {
             let stateCopy = {...state}
-            stateCopy.count = state.count + 1
+            stateCopy.count = stateCopy.count + 1
             return stateCopy
         }
         case 'RESET-COUNT': {
             let stateCopy = {...state}
-            stateCopy.count = state.minValue
+            stateCopy.count = stateCopy.minValue
             return stateCopy
         }
         case 'SET-MAX-VALUE-COUNT': {
@@ -66,6 +66,7 @@ export const counterReducer = (state: StateType = initialState, action: ActionsT
         case 'SET-MIN-VALUE-COUNT': {
             let stateCopy = {...state}
             stateCopy.minValue = action.minValue
+            stateCopy.isDisabled = true
             return stateCopy
         }
         case 'SHOW-MESSAGE': {
