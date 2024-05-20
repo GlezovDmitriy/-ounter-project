@@ -4,22 +4,18 @@ import {ResetButton} from "./ResetButton";
 import {SettingButton} from "./components/SettingButton";
 import {useDispatch, useSelector} from "react-redux";
 import {IncrementCountAC, ResetCountAC, SetMaxValueAC, SetMinValueAC, StateType} from "./state/counter-reducer";
-import {AppRootStateType} from "./state/store";
+import {AppStoreType, store} from "./state/store";
 import {useCounterWithRedux} from "./useCounterWithRedux";
 
 export const CounterWithRedux = React.memo(
     () => {
-        /*const dispatch = useDispatch()
-        const state = useSelector<AppRootStateType, StateType>(state => state.state)
-       /!* const maxValue = useSelector<StateType>(state => state.maxValue)
-        const minValue = useSelector<StateType>(state => state.minValue)
-        const message = useSelector<StateType>(state => state.message)*!/
+        const dispatch = useDispatch()
 
         let [error, setError] = useState(false)
         let [setting, setSetting] = useState(false)
 
 
-        const onClickIncHandler = () => {
+       /* const onClickIncHandler = () => {
             const action = IncrementCountAC()
             dispatch(action)
         }

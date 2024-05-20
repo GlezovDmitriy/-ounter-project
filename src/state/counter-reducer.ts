@@ -27,7 +27,6 @@ type ResetCountActionType = {
 }
 type SettingCounterActionType = {
     type: 'SETTING',
-
 }
 
 type ActionsType =
@@ -37,6 +36,7 @@ type ActionsType =
     | ShowMessageActionType
     | ResetCountActionType
     | SettingCounterActionType
+
 
 const initialState: StateType = {
     count: 0,
@@ -76,12 +76,11 @@ export const counterReducer = (state: StateType = initialState, action: ActionsT
             return {...state, message: action.message}
         }
         case 'SETTING': {
-            /*let stateCopy = {...state}
-            stateCopy.message = action.message
-            return stateCopy*/
-            return {...state, isDisabled: false, count:state.minValue}
+            let stateCopy = {...state}
+            stateCopy.isDisabled = false
+            stateCopy.count = stateCopy.minValue
+            return stateCopy
         }
-
         default:
             return state
     }

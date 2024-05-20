@@ -5,7 +5,6 @@ import {Button} from "@mui/material";
 import {SettingButton} from "./components/SettingButton";
 import {useDispatch, useSelector} from "react-redux";
 import {StateType} from "./state/counter-reducer";
-import {AppRootStateType} from "./state/store";
 
 export const Counter = () => {
     let [count, setCount] = useState(0)

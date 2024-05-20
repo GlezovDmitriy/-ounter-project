@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "./state/store";
+import {AppStateType, AppStoreType} from "./state/store";
 import {
     IncrementCountAC,
     ResetCountAC,
@@ -12,7 +12,11 @@ import {ChangeEvent, useCallback, useState} from "react";
 
 export const useCounterWithRedux = ()=>{
     const dispatch = useDispatch()
-    const state = useSelector<AppRootStateType, StateType>(state => state.state)
+    const state = useSelector<AppStateType, StateType>(state => state.counter)
+    const count = useSelector<StateType>(state => state.count)
+    const maxValue = useSelector<StateType>(state => state.maxValue)
+    const minValue = useSelector<StateType>(state => state.minValue)
+    const isDisabled = useSelector<StateType>(state => state.isDisabled)
 
 
 
@@ -49,6 +53,7 @@ export const useCounterWithRedux = ()=>{
         },[dispatch]
     )
     return{
+
         state,
         onChangeMinInputHandler,
         onChangeMaxInputHandler,
