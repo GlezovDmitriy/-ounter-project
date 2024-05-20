@@ -1,6 +1,7 @@
 
 import { combineReducers, createStore } from 'redux'
 import {counterReducer} from "./counter-reducer";
+import {loadState, saveState} from "../utils/localStorage-utils";
 
 // объединяя reducer-ы с помощью combineReducers,
 // мы задаём структуру нашего единственного объекта-состояния
@@ -10,11 +11,17 @@ const rootReducer = combineReducers({
 
 export type AppStateType = ReturnType<typeof rootReducer>
 // непосредственно создаём store
-export const store = createStore(rootReducer)
+// когда будут САНКИ - добавить мидлвэар!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+export const store = createStore(rootReducer, loadState())
 
+store.subscribe(() => {
+    saveState({
+        counter: store.getState().counter
+    });
+});
 store.subscribe(()=>{
     localStorage.setItem('app-state', JSON.stringify(store.getState()))
-    localStorage.setItem('count', JSON.stringify(store.getState().counter?.count))
+
 })
 // определить автоматически тип всего объекта состояния
 export type AppStoreType = typeof store
